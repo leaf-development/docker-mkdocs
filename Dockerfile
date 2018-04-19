@@ -1,13 +1,5 @@
-FROM python:3
+FROM polinux/mkdocs
 
-RUN pip install --no-cache-dir --upgrade mkdocs mkdocs-windmill
+RUN pip install --no-cache-dir --upgrade mkdocs-windmill
 
-ENV BOOKDIR /mkdocs
-
-VOLUME $BOOKDIR
-
-EXPOSE 8000
-
-WORKDIR $BOOKDIR
-
-CMD ["mkdocs", "--help"]
+ENTRYPOINT ["/bootstrap.sh"]
